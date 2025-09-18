@@ -1,0 +1,190 @@
+.timeline-container {
+  background: #0d0d2b;
+  color: white;
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #a855f7;
+  margin-top: 6%;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: #a855f7;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item .content {
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+/* Shake on hover */
+.timeline-item .content:hover {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 0px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(2px, 0px) rotate(2deg);
+  }
+  60% {
+    transform: translate(-2px, 0px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(2px, 0px) rotate(2deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* Left & Right positioning */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+/* Timeline dots */
+.timeline-item::before {
+  content: " ";
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #a855f7;
+  border: 3px solid #0d0d2b;
+  z-index: 1;
+}
+
+.timeline-item.left::before {
+  right: -10px;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+}
+
+/* Period boxes */
+.period-box {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  background: #1e1e40;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+/* Start dates (S) → near card */
+.timeline-item.left .period-box.start {
+  right: 100%;
+}
+
+.timeline-item.right .period-box.start {
+  left: 100%;
+}
+
+/* End dates (E) → near central line */
+.timeline-item.left .period-box.end {
+  right: -70px;
+}
+
+.timeline-item.right .period-box.end {
+  left: -70px;
+}
+
+h3,
+h4 {
+  text-align: center;
+}
+
+/* Mobile responsive (stacked timeline) */
+@media screen and (max-width: 768px) {
+  .timeline-title {
+    margin-top: 20%;
+  }
+  .timeline::after {
+    left: 20px; /* move center line to the left */
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px; /* space for the vertical line & dot */
+    padding-right: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Reset left/right positioning */
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left;
+  }
+
+  /* Timeline dots */
+  .timeline-item::before {
+    left: 10px;
+    right: auto;
+  }
+
+  /* Period boxes align nicely */
+  .timeline-item .period-box.start {
+    display: inline-block;
+    left: 0;
+    right: auto;
+    margin-bottom: 8px;
+  }
+
+  .timeline-item .period-box.end {
+    display: inline-block;
+    left: 0;
+    right: auto;
+    margin-top: 8px;
+  }
+
+  h3,
+  h4 {
+    text-align: left;
+  }
+}
