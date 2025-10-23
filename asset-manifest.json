@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.47b61899.css",
-    "main.js": "/portfolio/static/js/main.155d5cf4.js",
+    "main.js": "/portfolio/static/js/main.f2302d0e.js",
     "static/js/415.4d6acbeb.chunk.js": "/portfolio/static/js/415.4d6acbeb.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/electric_outage.png": "/portfolio/static/media/electric_outage.e4700051ecd03933a6b7.png",
@@ -12,7 +12,7 @@
     "static/media/healthcare.png": "/portfolio/static/media/healthcare.5789f873b794979e8681.png",
     "static/media/dental_clinic.png": "/portfolio/static/media/dental_clinic.eae5e9bad17a6ce39ad0.png",
     "static/media/insurance.png": "/portfolio/static/media/insurance.e550d0d5711f3399723a.png",
-    "static/media/Gnanamuthu_CV.pdf": "/portfolio/static/media/Gnanamuthu_CV.820e9a24b87429b7a3b7.pdf",
+    "static/media/Gnanamuthu_CV.pdf": "/portfolio/static/media/Gnanamuthu_CV.32e6c5d0ec14e2013d4d.pdf",
     "static/media/home-main.svg": "/portfolio/static/media/home-main.359935c39288e92d4dba5c9f2445b91d.svg",
     "static/media/about.png": "/portfolio/static/media/about.aee0f771fbfc1e7b8fa8.png",
     "static/media/home-bg.jpg": "/portfolio/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
@@ -20,12 +20,12 @@
     "static/media/pre.svg": "/portfolio/static/media/pre.4410c5baaa673cc131da.svg",
     "index.html": "/portfolio/index.html",
     "main.47b61899.css.map": "/portfolio/static/css/main.47b61899.css.map",
-    "main.155d5cf4.js.map": "/portfolio/static/js/main.155d5cf4.js.map",
+    "main.f2302d0e.js.map": "/portfolio/static/js/main.f2302d0e.js.map",
     "415.4d6acbeb.chunk.js.map": "/portfolio/static/js/415.4d6acbeb.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.47b61899.css",
-    "static/js/main.155d5cf4.js"
+    "static/js/main.f2302d0e.js"
   ]
 }
