@@ -47,7 +47,7 @@ function AboutCard() {
             </li>
           </ul>
           <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"
+            "We can’t change yesterday, but we can build tomorrow"
           </p>
           <footer className="blockquote-footer">GNANAMUTHU GOVINTHAN</footer>
         </blockquote>

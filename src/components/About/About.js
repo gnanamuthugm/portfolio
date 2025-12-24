@@ -7,6 +7,8 @@ import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
 import Cloudstack from "./Cloudstack";
+import ConversationalAIStack from "./Ccai";
+import CRMIntegrationStack from "./crm";
 
 function About() {
   return (
@@ -36,7 +38,22 @@ function About() {
           </Col>
         </Row>
         <h1 className="project-heading">
-          💻 Professional <strong className="purple">Skillset</strong>
+          🧠 <strong className="purple">Conversational AI & CCAIP</strong>
+        </h1>
+        <ConversationalAIStack />
+
+        <h1 className="project-heading">
+          ☁️ <strong className="purple">Cloud Services</strong> I Work With
+        </h1>
+        <Cloudstack />
+
+        <h1 className="project-heading">
+          🧩 <strong className="purple">CRM & Integrations</strong>
+        </h1>
+        <CRMIntegrationStack />
+
+        <h1 className="project-heading">
+          💻 <strong className="purple">Programming & Databases</strong>
         </h1>
         <Techstack />
 
@@ -44,11 +61,6 @@ function About() {
           🛠️ <strong className="purple">Tools</strong> I Use
         </h1>
         <Toolstack />
-
-        <h1 className="project-heading">
-          ☁️ <strong className="purple">Cloud Services</strong> I Work With
-        </h1>
-        <Cloudstack />
 
         <Github />
       </Container>

@@ -1,31 +1,30 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import ReactTooltip from "react-tooltip"; // ✅ Correct import
+import ReactTooltip from "react-tooltip";
 
 import {
   SiVisualstudiocode,
   SiPostman,
-  SiSlack,
-  SiVercel,
   SiGithub,
-  SiGooglecloud,
-  SiWordpress,
-  SiDrupal,
+  SiSlack,
+  SiGit,
+  SiJira,
+  SiTrello
 } from "react-icons/si";
+import { FaChrome } from "react-icons/fa";
 
 const tools = [
   { icon: <SiVisualstudiocode color="#007ACC" />, name: "VS Code" },
   { icon: <SiPostman color="#FF6C37" />, name: "Postman" },
+  { icon: <SiGithub color="#FFFFFF" />, name: "GitHub" },
+  { icon: <SiGit color="#F05032" />, name: "Git" },
+  { icon: <SiJira color="#0052CC" />, name: "JIRA" },
+  { icon: <SiTrello color="#0079BF" />, name: "Trello" },
+  { icon: <FaChrome color="#4285F4" />, name: "Chrome DevTools" },
   { icon: <SiSlack color="#4A154B" />, name: "Slack" },
-  { icon: <SiVercel />, name: "Vercel" },
-  { icon: <SiGithub />, name: "GitHub" },
-  { icon: <SiWordpress color="#21759B" />, name: "WordPress" },
-  { icon: <SiDrupal color="#0678BE" />, name: "Drupal" },
 ];
 
-
-
-function Toolstack() {
+function ToolsStack() {
   return (
     <>
       <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
@@ -35,8 +34,8 @@ function Toolstack() {
             xs={4}
             md={2}
             className="tech-icons"
-            data-tip={tool.name}      // ✅ Use data-tip
-            data-for="tools-tooltip"  // ✅ Use data-for
+            data-tip={tool.name}
+            data-for="tools-tooltip"
           >
             {tool.icon}
           </Col>
@@ -47,4 +46,4 @@ function Toolstack() {
   );
 }
 
-export default Toolstack;
+export default ToolsStack;
