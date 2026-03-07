@@ -115,12 +115,13 @@ function Contact() {
 
       // Prepare email data
       const emailData = {
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        from_email: formData.email,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        company_name: formData.companyName,
+        email: formData.email,
         phone: formData.phone,
-        company: formData.companyName,
         message: formData.message,
-        job_description: formData.jobDescriptionText
+        job_description: 'Not provided'
       };
 
       // Send email using EmailJS
