@@ -1,11 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
 } from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 const TopmateIcon = (props) => (
   <svg
@@ -116,6 +117,16 @@ function Home2() {
                 >
                   <TopmateIcon />
                 </a>
+              </li>
+
+              <li className="social-icons">
+                <Link
+                  to="/contact"
+                  className="icon-colour home-social-icons"
+                  title="Contact Me"
+                >
+                  <FaEnvelope />
+                </Link>
               </li>
 
               {/* <li className="social-icons">

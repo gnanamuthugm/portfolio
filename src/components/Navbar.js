@@ -92,10 +92,10 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                to="/resume"
+                to="/contact"
                 onClick={() => updateExpanded(false)}
               >
-                📄 Resume
+                💼 Contact
               </Nav.Link>
             </Nav.Item>
 
