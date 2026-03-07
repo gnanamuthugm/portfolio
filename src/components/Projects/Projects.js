@@ -10,6 +10,8 @@ import PrescriptionRefill from "../../Assets/Projects/Prescription_refill.png";
 import BloodDonation from "../../Assets/Projects/blood_donation.png";
 import InsuranceClaim from "../../Assets/Projects/insurance.png";
 import DentalClinic from "../../Assets/Projects/dental_clinic.png";
+import hr from '../../Assets/Projects/Human_resource.webp'
+import ecommerce from '../../Assets/Projects/Ecommerce.webp'
 
 function Projects() {
   return (
@@ -25,6 +27,22 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
+              imgPath={ecommerce}
+              isBlog={false}
+              title="Ecommerce Voice & Chat Bot"
+              description="Built conversational AI voice and chatbots for e-commerce applications to handle product inquiries, order tracking, return and refund requests, and customer support automation, integrating backend APIs for real-time order and product data retrieval."
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={hr}
+              isBlog={false}
+              title="HR Voice & Chat Bot"
+              description="Built HR voice and chatbot assistants using conversational AI platforms to handle employee queries such as leave balance, payroll information, onboarding support, and HR policies, integrating backend APIs for real-time data retrieval and automated responses."
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
               imgPath={Healthcare}
               isBlog={false}
               title="Healthcare Appointment Assistant"
@@ -32,14 +50,14 @@ function Projects() {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          {/* <Col md={4} className="project-card">
             <ProjectCard
               imgPath={Covid}
               isBlog={false}
               title="COVID Vaccination"
               description="Developed a smart voice/chat assistant for viewing vaccination slots, downloading certificates, and rescheduling appointments. Powered by Dialogflow CX with a custom Node.js webhook integration."
             />
-          </Col>
+          </Col> */}
 
           <Col md={4} className="project-card">
             <ProjectCard
