@@ -6,6 +6,8 @@ import emailjs from '@emailjs/browser';
 import { useToast } from '../../context/ToastContext';
 import Particle from '../Particle';
 import pdf from '../../Assets/Gnanamuthu_CV.pdf';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import './Contact.css';
 
 /*
@@ -55,10 +57,8 @@ function Contact() {
       newErrors.email = 'Email address is invalid';
     }
     
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid';
+    if (!formData.phone || formData.phone.length < 8) {
+      newErrors.phone = "Please enter a valid phone number with country code";
     }
     
     if (!formData.message.trim()) {
@@ -92,66 +92,53 @@ function Contact() {
       return;
     }
 
+    // Check for duplicate submissions
+    const submittedContacts = JSON.parse(localStorage.getItem('submittedContacts') || '[]');
+    const isDuplicate = submittedContacts.some(
+      contact => 
+        contact.email.toLowerCase() === formData.email.toLowerCase() || 
+        contact.phone === formData.phone
+    );
+
+    if (isDuplicate) {
+      showError('This contact information has already been submitted. Please use a different email or phone number.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Check if EmailJS credentials are configured
+      // EmailJS configuration
       const serviceId = 'service_ml9ykmd';
       const templateId = 'template_adadezg';
       const publicKey = 'Icb8eMEicXJurq6we';
-      
-      // Prepare job description info
-      let jobDescriptionInfo = 'Not provided';
-      if (formData.jobDescriptionText.trim()) {
-        jobDescriptionInfo = formData.jobDescriptionText;
-      }
-      
-      // If using placeholder credentials, log the data instead
-      if (serviceId.includes('your_') || templateId.includes('your_') || publicKey.includes('your_')) {
-        console.log('Contact Form Submission (EmailJS not configured):', {
-          ...formData,
-          jobDescriptionInfo
-        });
-        showSuccess('Thank you for sharing the opportunity.');
-        setFormData({
-          firstName: '',
-          lastName: '',
-          companyName: '',
-          email: '',
-          phone: '',
-          message: '',
-          jobDescriptionText: ''
-        });
-        return;
-      }
 
-      // Send actual email if credentials are configured
-      await emailjs.send(serviceId, templateId, {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        company_name: formData.companyName,
+      // Prepare email data
+      const emailData = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
         from_email: formData.email,
-        email: formData.email, // Add email as separate field for visibility
         phone: formData.phone,
+        company: formData.companyName,
         message: formData.message,
-        job_description: jobDescriptionInfo
-      }, publicKey);
+        job_description: formData.jobDescriptionText
+      };
 
-      // showSuccess('Message sent successfully. I will get back to you soon.');
-      showSuccess('Thank you for sharing the opportunity.');
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, emailData, publicKey);
+
+      showSuccess('Thank you for sharing opportunity.');
       setFormData({
         firstName: '',
         lastName: '',
         companyName: '',
         email: '',
         phone: '',
-        message: '',
-        jobDescriptionText: ''
+        message: ''
       });
       
     } catch (error) {
       console.error('Failed to send email:', error);
-      showError('Failed to send message. Please try again or contact me directly.');
+      showError('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -227,18 +214,19 @@ function Contact() {
 
                   <Col md={6} className="mb-3">
                     <Form.Label className="form-label-custom">HR Phone Number *</Form.Label>
-                    <Form.Control
-                      type="tel"
-                      name="phone"
+                    <PhoneInput
+                      country={"in"}
+                      enableSearch={true}
                       value={formData.phone}
-                      onChange={handleChange}
-                      isInvalid={!!errors.phone}
-                      placeholder="Phone Number"
-                      className="form-control-custom"
+                      onChange={(phone) => setFormData({ ...formData, phone })}
+                      containerClass="phone-container"
+                      inputClass="phone-input"
                     />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.phone}
-                    </Form.Control.Feedback>
+                    {errors.phone && (
+                      <div className="invalid-feedback d-block" style={{ color: '#dc3545', fontSize: '0.875rem', marginTop: '0.25rem' }}>
+                        {errors.phone}
+                      </div>
+                    )}
                   </Col>
                 </Row>
 

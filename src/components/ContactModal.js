@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button, Alert } from 'react-bootstrap';
 import emailjs from '@emailjs/browser';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import './ContactModal.css';
 
 /*
  * EMAILJS SETUP INSTRUCTIONS:
@@ -44,10 +47,10 @@ const ContactModal = ({ show, handleClose }) => {
       newErrors.email = 'Email is invalid';
     }
     
-    if (!formData.phone.trim()) {
+    if (!formData.phone || formData.phone.trim() === '') {
       newErrors.phone = 'Phone number is required';
-    } else if (!/^\+?[\d\s\-\(\)]+$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid';
+    } else if (formData.phone.length < 10) {
+      newErrors.phone = 'Please enter a valid phone number';
     }
     
     if (!formData.jobDescription.trim()) {
@@ -200,17 +203,23 @@ const ContactModal = ({ show, handleClose }) => {
 
           <Form.Group className="mb-3">
             <Form.Label className="text-white">Phone Number *</Form.Label>
-            <Form.Control
-              type="tel"
-              name="phone"
+            <PhoneInput
+              country={'us'}
               value={formData.phone}
-              onChange={handleChange}
-              isInvalid={!!errors.phone}
-              placeholder="Phone Number"
+              onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
+              inputClass={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+              containerClass="react-tel-input"
+              placeholder="Enter phone number"
+              enableSearch={true}
+              searchPlaceholder="Search country"
+              preferredCountries={['us', 'gb', 'in', 'ca', 'au']}
+              autoFormat={true}
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.phone}
-            </Form.Control.Feedback>
+            {errors.phone && (
+              <div className="invalid-feedback d-block">
+                {errors.phone}
+              </div>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3">
