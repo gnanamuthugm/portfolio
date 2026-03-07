@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.9553af4d.css",
-    "main.js": "/portfolio/static/js/main.a891b4c0.js",
+    "main.css": "/portfolio/static/css/main.9b6f46cf.css",
+    "main.js": "/portfolio/static/js/main.f48e239b.js",
     "static/js/415.4d6acbeb.chunk.js": "/portfolio/static/js/415.4d6acbeb.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/electric_outage.png": "/portfolio/static/media/electric_outage.e4700051ecd03933a6b7.png",
@@ -21,13 +21,13 @@
     "static/media/avatar.svg": "/portfolio/static/media/avatar.7f806e40d46fc76fbc3c4a3d71349951.svg",
     "static/media/pre.svg": "/portfolio/static/media/pre.4410c5baaa673cc131da.svg",
     "index.html": "/portfolio/index.html",
-    "main.9553af4d.css.map": "/portfolio/static/css/main.9553af4d.css.map",
-    "main.a891b4c0.js.map": "/portfolio/static/js/main.a891b4c0.js.map",
+    "main.9b6f46cf.css.map": "/portfolio/static/css/main.9b6f46cf.css.map",
+    "main.f48e239b.js.map": "/portfolio/static/js/main.f48e239b.js.map",
     "415.4d6acbeb.chunk.js.map": "/portfolio/static/js/415.4d6acbeb.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9553af4d.css",
-    "static/js/main.a891b4c0.js"
+    "static/css/main.9b6f46cf.css",
+    "static/js/main.f48e239b.js"
   ]
 }
