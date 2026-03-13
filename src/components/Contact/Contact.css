@@ -398,15 +398,15 @@
   .project-heading {
     margin-top: 20%;
   }
+}
 
-  .contact-message-text {
+.contact-message-text {
     color: #8b5cf6;
   }
 
   .contact-subtitle {
     color: #ffffff;
   }
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
