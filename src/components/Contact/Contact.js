@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { FaEnvelope } from 'react-icons/fa';
 import { AiOutlineDownload } from 'react-icons/ai';
@@ -8,6 +8,7 @@ import Particle from '../Particle';
 import pdf from '../../Assets/Gnanamuthu_CV.pdf';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './Contact.css';
 
 /*
@@ -26,8 +27,10 @@ import './Contact.css';
  *    - publicKey: Your public key from EmailJS dashboard
  */
 
-function Contact() {
+const Contact = () => {
   const { showSuccess, showError } = useToast();
+  const recaptchaRef = useRef();
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -37,8 +40,10 @@ function Contact() {
     message: '',
     jobDescriptionText: ''
   });
+  
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
@@ -92,16 +97,9 @@ function Contact() {
       return;
     }
 
-    // Check for duplicate submissions
-    const submittedContacts = JSON.parse(localStorage.getItem('submittedContacts') || '[]');
-    const isDuplicate = submittedContacts.some(
-      contact => 
-        contact.email.toLowerCase() === formData.email.toLowerCase() || 
-        contact.phone === formData.phone
-    );
-
-    if (isDuplicate) {
-      showError('This contact information has already been submitted. Please use a different email or phone number.');
+    // Check if reCAPTCHA is completed
+    if (!captchaValue) {
+      showError('Please verify captcha');
       return;
     }
 
@@ -134,8 +132,15 @@ function Contact() {
         companyName: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
+        jobDescriptionText: ''
       });
+      
+      // Reset reCAPTCHA after successful submission
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+      setCaptchaValue(null);
       
     } catch (error) {
       console.error('Failed to send email:', error);
@@ -278,6 +283,16 @@ function Contact() {
                     className="form-control-custom"
                   />
                 </Form.Group>
+
+                {/* Google reCAPTCHA */}
+                <div className="mb-4 text-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6LdC2YgsAAAAAEpE0Ssdh6EanwpIU4Bu6MYV9UMk"
+                    onChange={(value) => setCaptchaValue(value)}
+                    onExpired={() => setCaptchaValue(null)}
+                  />
+                </div>
 
                 <div className="d-grid">
                   <Button

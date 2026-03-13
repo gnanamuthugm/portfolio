@@ -393,6 +393,21 @@
   box-shadow: 0 0 0 0.2rem rgba(205, 95, 248, 0.25) !important;
 }
 
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .project-heading {
+    margin-top: 20%;
+  }
+
+  .contact-message-text {
+    color: #8b5cf6;
+  }
+
+  .contact-subtitle {
+    color: #ffffff;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .phone-input {
