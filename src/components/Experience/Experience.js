@@ -20,7 +20,7 @@ const experiences = [
     description: "Developed chatbots and conversational interfaces."
   },
   {
-    start: "July 2019",
+    start: "January 2020",
     end: "June 2021",
     company: "Hyva India Pvt. Ltd.",
     role: "Planning Engineer",
