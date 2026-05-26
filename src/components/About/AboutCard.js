@@ -14,7 +14,7 @@ function AboutCard() {
             <br />
             <br />
             I'm a <b className="purple">Conversational AI Engineer</b> with over
-            3+ years of experience building intelligent IVR and chatbot
+            4+ years of experience building intelligent IVR and chatbot
             solutions using <b className="purple">Dialogflow CX</b>,{" "}
             <b className="purple">Node.js</b>, and{" "}
             <b className="purple">Google Cloud Platform</b>. I’ve designed and
