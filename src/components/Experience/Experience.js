@@ -4,10 +4,19 @@ import Particle from "../Particle";
 
 const experiences = [
   {
-    start: "September 2025",
+    start: "25 June 2026",
     end: "Present",
+    company: "Cognizant Pvt. Ltd.",
+    role: "Tech Lead",
+    location: "Chennai",
+    color: "green",
+  },
+  {
+    start: "September 2025",
+    end: "22 June 2026",
     company: "Nisum Consulting Pvt. Ltd.",
     role: "Senior Software Engineer",
+    location: "Hyderabad",
     color: "blue",
   },
   {
@@ -15,6 +24,7 @@ const experiences = [
     end: "June 2025",
     company: "Sensiple Software Solutions Pvt. Ltd.",
     role: "Junior Developer",
+    location: "Chennai",
     color: "orange",
   },
   {
@@ -22,22 +32,41 @@ const experiences = [
     end: "June 2021",
     company: "Hyva India Pvt. Ltd.",
     role: "Jr Engineer PPC",
+    location: "Bangalore",
     color: "yellow",
   },
 ];
 
-// Parse "Month YYYY" or "Present" → Date (1st of that month)
 function parseMonthYear(str) {
   if (!str || str.trim().toLowerCase() === "present") {
     const now = new Date();
     return new Date(now.getFullYear(), now.getMonth(), 1);
   }
+
+  const date = new Date(str);
+
+  if (!isNaN(date.getTime())) {
+    return new Date(date.getFullYear(), date.getMonth(), 1);
+  }
+
   const monthMap = {
-    January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
-    July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
+    January: 0,
+    February: 1,
+    March: 2,
+    April: 3,
+    May: 4,
+    June: 5,
+    July: 6,
+    August: 7,
+    September: 8,
+    October: 9,
+    November: 10,
+    December: 11,
   };
+
   const parts = str.trim().split(" ");
-  return new Date(parseInt(parts[1]), monthMap[parts[0]], 1);
+
+  return new Date(Number(parts[1]), monthMap[parts[0]], 1);
 }
 
 // Singular / Plural: 1 year | 2 years | 1 month | 3 months
@@ -109,14 +138,15 @@ function Experience() {
     <section>
       <Particle />
       <div className="timeline-container">
-
         {/* ── Title + Total Experience box ── */}
         <div className="title-row">
           <h1 className="timeline-title">
             🧑‍💻 My Experience
             <span className="total-exp-inline">
               {yearPart && <span className="total-exp-value">{yearPart}</span>}
-              {monthPart && <span className="total-exp-value">{monthPart}</span>}
+              {monthPart && (
+                <span className="total-exp-value">{monthPart}</span>
+              )}
             </span>
           </h1>
         </div>
@@ -134,23 +164,36 @@ function Experience() {
                 className="content"
                 style={{
                   backgroundColor:
-                    exp.color === "blue"
-                      ? "#1e90ff"
-                      : exp.color === "orange"
-                      ? "#ffa500"
-                      : "#ffff00",
+                    exp.color === "green"
+                      ? "#28a745"
+                      : exp.color === "blue"
+                        ? "#1e90ff"
+                        : exp.color === "orange"
+                          ? "#ffa500"
+                          : "#ffff00",
                 }}
               >
                 <h3>{exp.company}</h3>
                 <h4>{exp.role}</h4>
-                <DurationBadge startStr={exp.start} endStr={exp.end} />
+                {/* <DurationBadge startStr={exp.start} endStr={exp.end} /> */}
+                {/* <div className="badge-row">
+                  <DurationBadge startStr={exp.start} endStr={exp.end} />
+                  <div className="location-badge">📍 {exp.location}</div>
+                </div> */}
+                <div className="badge-row">
+                  <DurationBadge startStr={exp.start} endStr={exp.end} />
+
+                  <div className="location-badge">
+                    <span className="location-icon">📍</span>
+                    <span>{exp.location}</span>
+                  </div>
+                </div>
               </div>
 
               <div className="period-box start">{exp.start}</div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
