@@ -6,7 +6,7 @@ import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
 } from "react-icons/ai";
-import { FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { FaLinkedinIn, FaEnvelope, FaBlog } from "react-icons/fa";
 
 const TopmateIcon = (props) => (
   <svg
@@ -116,6 +116,18 @@ function Home2() {
                   className="icon-colour  home-social-icons"
                 >
                   <TopmateIcon />
+                </a>
+              </li>
+
+              <li className="social-icons">
+                <a
+                  href="https://ai-article-publisher.vercel.app/en" // replace with your blog URL
+                  target="_blank"
+                  rel="noreferrer"
+                  className="icon-colour  home-social-icons"
+                  title="Personal Blog"
+                >
+                  <FaBlog />
                 </a>
               </li>
 

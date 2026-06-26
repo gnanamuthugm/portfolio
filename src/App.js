@@ -18,6 +18,7 @@ import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Experience from "./components/Experience/Experience";
+import EmploymentDetails from "./components/EmploymentDetails/EmploymentDetails";
 import { ToastProvider } from "./context/ToastContext";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
             <Route path="/project" element={<Projects />} />
             <Route path="/about" element={<About />} />
             <Route path="/experience" element={<Experience />} />
+            <Route path="/employment-details" element={<EmploymentDetails />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Navigate to="/" />} />
